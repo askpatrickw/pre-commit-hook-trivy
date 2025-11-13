@@ -3,8 +3,8 @@
 ---
 # This manifest exposes multiple Trivy scanners as separate hook IDs.
 # Each hook runs the official aquasec/trivy container to perform a
-# security scan over different targets. The Trivy version is managed separately
-# by installing it as a developer dependency. Consumers can extend
+# security scan over different targets. These hooks require Trivy to be installed
+# and available in the system PATH. Version management must be handled externally.
 # behavior using `args:` in their own .pre-commit-config.yaml.
 
 - id: trivy-fs
