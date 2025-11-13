@@ -10,7 +10,7 @@
 - id: trivy-fs
   name: Trivy filesystem
   language: system
-  entry: trivy fs --cache-dir /src/.pre-commit-trivy-cache --no-progress --exit-code 1 .
+  entry: trivy fs --no-progress --exit-code 1 .
   pass_filenames: false
   description: |
     Scan the contents of the repository's filesystem for vulnerabilities,
@@ -22,7 +22,7 @@
 - id: trivy-config
   name: Trivy IaC configuration
   language: system
-  entry: trivy config --cache-dir /src/.pre-commit-trivy-cache --exit-code 1 .
+  entry: trivy config --exit-code 1 .
   pass_filenames: false
   description: |
     Detect misconfigurations in infrastructure-as-code files such as
@@ -33,7 +33,7 @@
 - id: trivy-repo
   name: Trivy repository
   language: system
-  entry: trivy repo --cache-dir /src/.pre-commit-trivy-cache --no-progress --exit-code 1 .
+  entry: trivy repo --no-progress --exit-code 1 .
   pass_filenames: false
   description: |
     Perform an aggregated scan of the entire repository. This command
@@ -46,7 +46,7 @@
 - id: trivy-image-registry
   name: Trivy container image (registry)
   language: system
-  entry: trivy image --cache-dir /src/.pre-commit-trivy-cache --no-progress --exit-code 1
+  entry: trivy image --no-progress --exit-code 1
   pass_filenames: false
   description: |
     Scan a container image pulled from a registry. The image
@@ -57,7 +57,7 @@
 - id: trivy-image-daemon
   name: Trivy container image (local daemon)
   language: system
-  entry: bash -lc 'docker run --rm -v "$PWD":/src -v /var/run/docker.sock:/var/run/docker.sock trivy image --cache-dir /src/.pre-commit-trivy-cache --no-progress --exit-code 1 "$@"'
+  entry: bash -lc 'docker run --rm -v "$PWD":/src -v /var/run/docker.sock:/var/run/docker.sock trivy image --no-progress --exit-code 1 "$@"'
   pass_filenames: false
   description: |
     Scan a locally built container image by mounting the host's
