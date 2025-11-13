@@ -42,27 +42,3 @@
     remote repositories by passing a URL via args. Due to its
     comprehensiveness it is recommended to run on push or manual
     stages rather than on every commit.
-
-- id: trivy-image-registry
-  name: Trivy container image (registry)
-  language: system
-  entry: trivy image --no-progress --exit-code 1
-  pass_filenames: false
-  description: |
-    Scan a container image pulled from a registry. The image
-    reference (e.g. alpine:3.20) must be supplied via args in the
-    consuming configuration. This hook does not have access to the
-    local Docker daemon.
-
-- id: trivy-image-daemon
-  name: Trivy container image (local daemon)
-  language: system
-  entry: bash -lc 'docker run --rm -v "$PWD":/src -v /var/run/docker.sock:/var/run/docker.sock trivy image --no-progress --exit-code 1 "$@"'
-  pass_filenames: false
-  description: |
-    Scan a locally built container image by mounting the host's
-    Docker socket into the Trivy container. This requires that
-    Docker is installed and the current user has permissions to
-    access /var/run/docker.sock. Use this hook sparingly, as it
-    depends on host-specific state. The image name to scan should
-    be passed via args.
