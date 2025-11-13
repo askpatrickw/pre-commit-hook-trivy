@@ -5,7 +5,7 @@
 # Each hook runs the official aquasec/trivy container to perform a
 # security scan over different targets. These hooks require Trivy to be installed
 # and available in the system PATH. Version management must be handled externally.
-# behavior using `args:` in their own .pre-commit-config.yaml.
+# Users can customize behavior using `args:` in their own .pre-commit-config.yaml.
 
 - id: trivy-fs
   name: Trivy filesystem
