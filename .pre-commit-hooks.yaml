@@ -22,7 +22,7 @@
 - id: trivy-config
   name: Trivy IaC configuration
   language: docker_image
-  entry: aquasec/trivy:0.67.2 config --cache-dir /src/.pre-commit-trivy-cache --no-progress --exit-code 1 .
+  entry: aquasec/trivy:0.67.2 config --cache-dir /src/.pre-commit-trivy-cache --exit-code 1 .
   pass_filenames: false
   description: |
     Detect misconfigurations in infrastructure-as-code files such as
