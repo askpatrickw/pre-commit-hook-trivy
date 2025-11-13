@@ -39,9 +39,6 @@ inside your repository.
          - id: trivy-repo
            stages: [push]
            args: [--scanners, vuln,misconfig,secret,license]
-         - id: trivy-image-registry
-           stages: [manual]
-           args: [--scanners, vuln,license, alpine:3.20]
    ```
 
 3. Optional: create a `trivy.yaml` file in the root of your project to centralize
